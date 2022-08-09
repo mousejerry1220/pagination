@@ -43,6 +43,10 @@ public abstract class PageCondition implements Serializable{
 	
 	public abstract Class<?> getEntityClass();
 	
+	/**
+	 * 为了防止用户非法输入造成SQL注入，验证传入的排序字段是否存在实体对象中
+	 * @param orderProp
+	 */
 	private void validateField(String orderProp) {
 		Class<?> cls = getEntityClass();
 		if(cls == null) {
@@ -61,12 +65,6 @@ public abstract class PageCondition implements Serializable{
 			}
 		}
 	}
-
-	/**
-	 * 为了防止用户非法输入造成SQL注入，需要实现类覆盖该方法，返回安全的字段名称
-	 * @param orderProp
-	 * @return
-	 */
 
 	private final static String[] CHARS = new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 	

@@ -9,7 +9,12 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
+	<description>
+		mybatis generator pagination
+	</description>
+	
+	<url>https://github.com/mousejerry1220/pagination</url>
+	
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>

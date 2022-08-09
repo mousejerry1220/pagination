@@ -19,6 +19,13 @@ import com.github.pagehelper.PageHelper;
 
 public class PageUtils {
 	
+	/**
+	 * 将集合的原有泛型类型修改为泛型B，用于隐藏一些不需要的字段
+	 * @param <B> 需要被转换后的泛型类型
+	 * @param alist
+	 * @param cls
+	 * @return
+	 */
 	public static <B> List<B> convert(List<?> alist,Class<B> cls) {
 		List<B> bList = new Page<>();
 		BeanUtils.copyProperties(alist, bList);
@@ -193,10 +200,10 @@ public class PageUtils {
 				if(queryCondition.searchNull()) {
 					String methodName = null;
 					if(field == collectionField) {
-						methodName = queryCondition.queryType().getSearchNullMethodName(getFieldName(collectionFieldName));
+						methodName = queryCondition.queryType().getIsNullMethodName(getFieldName(collectionFieldName));
 					}else {
 						String singleFieldName = getSingleFieldName(queryCondition.fieldName());
-						methodName = queryCondition.queryType().getSearchNullMethodName(StringUtils.hasLength(singleFieldName) ? singleFieldName : getFieldName(field.getName()) );
+						methodName = queryCondition.queryType().getIsNullMethodName(StringUtils.hasLength(singleFieldName) ? singleFieldName : getFieldName(field.getName()) );
 					}
 					Method method = criteria.getClass().getMethod(methodName);
 					method.invoke(criteria);

@@ -16,7 +16,7 @@ public enum QueryType {
 		return methodName.toString();
 	};
 	
-	public String getSearchNullMethodName(String fieldName) {
+	public String getIsNullMethodName(String fieldName) {
 		StringBuffer methodName = new StringBuffer(); 
 		methodName.append("and").append(fieldName).append("IsNull");
 		return methodName.toString();
